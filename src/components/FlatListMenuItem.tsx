@@ -4,6 +4,7 @@ import {MenuItem} from '../interfaces/interfaces';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
+
 interface RenderMenuItemProps {
     menuItem: MenuItem;
 }
