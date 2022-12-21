@@ -1,49 +1,20 @@
 import React from 'react';
-import {View, FlatList, Text} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {View, FlatList} from 'react-native';
 import FlatListMenuItem from '../components/FlatListMenuItem';
-import {MenuItem} from '../interfaces/interfaces';
+import Header from '../components/Header';
+import ItemSeparator from '../components/ItemSaparator';
+import menuItems from '../data/menuItems';
 import styles from '../theme/appTheme';
 
-const menuItems: MenuItem[] = [
-    {
-        name: 'Animation 101',
-        icon: 'cube-outline',
-        component: 'Animation101Screen',
-    },
-    {
-        name: 'Animation 102',
-        icon: 'cube-outline',
-        component: 'Animation102Screen',
-    },
-];
-
 const HomeScreen = (): JSX.Element => {
-    const {top} = useSafeAreaInsets();
-
-    const renderListHeader = () => {
-        return (
-            <View style={{marginTop: top + 20, marginBottom: 20}}>
-                <Text style={styles.title}>Opciones de Menú</Text>
-            </View>
-        );
-    };
-
-    const itemSeparator = () => {
-        return (
-            <View
-                style={{borderBottomWidth: 1, opacity: 0.4, marginVertical: 8}}
-            />
-        );
-    };
     return (
         <View style={{flex: 1, ...styles.globalMargin}}>
             <FlatList
                 data={menuItems}
                 renderItem={({item}) => <FlatListMenuItem menuItem={item} />}
                 keyExtractor={item => item.name}
-                ListHeaderComponent={renderListHeader}
-                ItemSeparatorComponent={itemSeparator}
+                ListHeaderComponent={<Header text="Opciones de Menú" />}
+                ItemSeparatorComponent={ItemSeparator}
             />
         </View>
     );
